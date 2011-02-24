@@ -86,4 +86,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
 
 %files doc
-%doc %{name}-%{version}-doc/html
+%defattr(644,root,root,755)
+%doc %{name}-%{version}-doc
