@@ -2,7 +2,7 @@
 Summary:	Large utility library
 Name:		ghc-%{pkgname}
 Version:	1.1.0.3
-Release:	0.1
+Release:	1
 Group:		Libraries
 # Data/Hash/CRC32/GZip.hs is BSD
 # Data/Hash/CRC32/Posix.hs is GPL+
@@ -10,23 +10,20 @@ Group:		Libraries
 # System/Time/ParseDate.hs is GPLv2 (newer parsedate is now BSD)
 # all 40 other src (and testsrc) files are GPLv2+
 License:	GPL v2+
-URL:		http://hackage.haskell.org/package/%{pkgname}
+URL:		http://hackage.haskell.org/package/MissingH
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	a64af1885d60523fe598b4dad086fa6e
 BuildRequires:	ghc >= 6.12.3
-#BuildRequires:	ghc-HUnit
-#BuildRequires:	ghc-doc
-#BuildRequires:	ghc-hslogger
-#BuildRequires:	ghc-mtl
-#BuildRequires:	ghc-network
-#BuildRequires:	ghc-parsec
-#BuildRequires:	ghc-prof
-#BuildRequires:	ghc-regex-compat
-#BuildRequires:	hscolour
+BuildRequires:	ghc-HUnit
+BuildRequires:	ghc-hslogger
+BuildRequires:	ghc-mtl
+BuildRequires:	ghc-network
+BuildRequires:	ghc-parsec
+BuildRequires:	ghc-prof
+BuildRequires:	ghc-regex-compat
+BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_releq	ghc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		ghcdir		ghc-%(/usr/bin/ghc --numeric-version)
 
 %description
 MissingH is a library of all sorts of utility functions for Haskell
@@ -65,5 +62,15 @@ runhaskell Setup.hs register \
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%ghc_pkg_recache
+
+%postun
+%ghc_pkg_recache
+
 %files
 %defattr(644,root,root,755)
+%doc COPYRIGHT TODO
+%doc %{name}-%{version}-doc/html
+%{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}
