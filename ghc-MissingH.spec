@@ -25,6 +25,9 @@ BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_releq	ghc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+# debuginfo is not useful for ghc
+%define		_enable_debug_packages	0
+
 %description
 MissingH is a library of all sorts of utility functions for Haskell
 programmers. It is written in pure Haskell and thus should be
