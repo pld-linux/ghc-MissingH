@@ -30,6 +30,17 @@ MissingH is a library of all sorts of utility functions for Haskell
 programmers. It is written in pure Haskell and thus should be
 extremely portable and easy to use.
 
+%package doc
+Summary:	HTML documentation for %{pkgname}
+Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla %{pkgname}
+Group:		Documentation
+
+%description doc
+HTML documentation for %{pkgname}.
+
+%description doc -l pl.UTF-8
+Dokumentacja w formacie HTML dla %{pkgname}.
+
 %prep
 %setup -q -n %{pkgname}-%{version}
 
@@ -71,6 +82,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYRIGHT TODO
-%doc %{name}-%{version}-doc/html
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
+
+%files doc
+%doc %{name}-%{version}-doc/html
