@@ -2,7 +2,7 @@
 Summary:	Large utility library
 Name:		ghc-%{pkgname}
 Version:	1.1.0.3
-Release:	1
+Release:	2
 Group:		Libraries
 # Data/Hash/CRC32/GZip.hs is BSD
 # Data/Hash/CRC32/Posix.hs is GPL+
@@ -22,7 +22,7 @@ BuildRequires:	ghc-parsec
 BuildRequires:	ghc-prof
 BuildRequires:	ghc-regex-compat
 BuildRequires:	rpmbuild(macros) >= 1.608
-%requires_releq	ghc
+%requires_eq	ghc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # debuginfo is not useful for ghc
