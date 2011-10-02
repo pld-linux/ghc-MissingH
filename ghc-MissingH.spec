@@ -2,7 +2,7 @@
 Summary:	Large utility library
 Name:		ghc-%{pkgname}
 Version:	1.1.0.3
-Release:	2
+Release:	3
 Group:		Libraries
 # Data/Hash/CRC32/GZip.hs is BSD
 # Data/Hash/CRC32/Posix.hs is GPL+
