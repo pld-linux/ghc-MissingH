@@ -20,6 +20,7 @@ BuildRequires:	ghc-mtl
 BuildRequires:	ghc-network
 BuildRequires:	ghc-parsec
 BuildRequires:	ghc-prof
+BuildRequires:	ghc-random
 BuildRequires:	ghc-regex-compat
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
