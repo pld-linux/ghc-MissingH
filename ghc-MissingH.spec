@@ -1,8 +1,8 @@
 %define		pkgname MissingH
 Summary:	Large utility library
 Name:		ghc-%{pkgname}
-Version:	1.1.0.3
-Release:	4
+Version:	1.2.0.0
+Release:	1
 Group:		Libraries
 # Data/Hash/CRC32/GZip.hs is BSD
 # Data/Hash/CRC32/Posix.hs is GPL+
@@ -12,7 +12,7 @@ Group:		Libraries
 License:	GPL v2+
 URL:		http://hackage.haskell.org/package/MissingH
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	a64af1885d60523fe598b4dad086fa6e
+# Source0-md5:	1b932f4637fedcb3b451e5aa9179c304
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-HUnit
 BuildRequires:	ghc-hslogger
@@ -48,9 +48,6 @@ Dokumentacja w formacie HTML dla %{pkgname}.
 %prep
 %setup -q -n %{pkgname}-%{version}
 
-mv COPYRIGHT COPYRIGHT.orig
-iconv -f iso8859-1 -t utf-8 COPYRIGHT.orig > COPYRIGHT
-
 %build
 runhaskell Setup.hs configure -v2 \
 	--prefix=%{_prefix} \
@@ -74,6 +71,7 @@ cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html %{name}-%{version}-doc
 runhaskell Setup.hs register \
 	--gen-pkg-config=$RPM_BUILD_ROOT/%{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 
+rm -rf $RPM_BUILD_ROOT/%{_docdir}/%{name}-%{version}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -85,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYRIGHT TODO
+%doc TODO
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
 
