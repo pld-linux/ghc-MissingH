@@ -10,9 +10,9 @@ Group:		Libraries
 # System/Time/ParseDate.hs is GPLv2 (newer parsedate is now BSD)
 # all 40 other src (and testsrc) files are GPLv2+
 License:	GPL v2+
-URL:		http://hackage.haskell.org/package/MissingH
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	1b932f4637fedcb3b451e5aa9179c304
+URL:		http://hackage.haskell.org/package/MissingH
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-HUnit
 BuildRequires:	ghc-hslogger
